@@ -1,0 +1,15 @@
+# Minimal deps for the per-sign fingerspelling path (Phase 1 / design §21.1).
+# Install just these to collect data, train, and live-test the MLP:
+#   pip install -r requirements-fingerspell.txt
+#
+# Use Python 3.11 or 3.12 (MediaPipe has no wheels for 3.13/3.14).
+#
+# mediapipe is PINNED to 0.10.21: releases 0.10.30+ are published as broken
+# `py3-none` wheels with NO compiled binary and NO `mp.solutions` module (which
+# our pipeline uses). 0.10.21 ships the real compiled cp311/cp312 wheel.
+# mediapipe pulls in opencv-contrib-python itself, so we do NOT list a separate
+# opencv-python (two cv2 packages fight over the numpy version and break the import).
+mediapipe==0.10.21
+scikit-learn>=1.4
+joblib>=1.3
+numpy>=1.26,<2   # mediapipe 0.10.21 needs numpy 1.x

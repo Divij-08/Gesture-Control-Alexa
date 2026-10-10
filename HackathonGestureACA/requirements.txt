@@ -1,0 +1,25 @@
+# GestureACA — Python dependencies (install with: pip install -r requirements.txt)
+# Pin loosely for a hackathon; tighten later if needed.
+
+# ── Vision / capture (Person A) ──────────────────────────────────
+mediapipe>=0.10
+opencv-python>=4.9
+
+# ── ML / training (Person A) ─────────────────────────────────────
+# Pick ONE deep-learning framework. TensorFlow/Keras has the simplest
+# built-in CTC + MLP paths; swap for torch if the team prefers PyTorch.
+tensorflow>=2.15
+scikit-learn>=1.4          # train/test split, metrics, KNN baseline
+numpy>=1.26
+
+# ── Language / cloud: composer + ACA leg (Person B) ──────────────
+boto3>=1.34                # Bedrock (Claude) + Polly (via device agent)
+awsiotsdk>=1.21            # MQTT client to the device agent (invoke_aca_live)
+
+# ── Orchestrator + UI (Person C) ─────────────────────────────────
+fastapi>=0.110
+uvicorn[standard]>=0.29
+websockets>=12
+
+# ── Dev / test ───────────────────────────────────────────────────
+pytest>=8.0
